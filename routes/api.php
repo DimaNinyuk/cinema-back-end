@@ -26,4 +26,5 @@ Route::get('auth/google/callback', 'Api\Auth\GoogleController@Callback');
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
-Route::get('films','FilmsController@today');
+Route::get('/films','FilmsController@today');
+Route::get('/filmsbygenre','FilmsController@bygenre');

@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Film extends Model
+class Genre extends Model
 {
+    //
     protected $fillable = [
         'name',
-        'description',
-        'release-date',
     ];
     public function genrefilms()
     {
