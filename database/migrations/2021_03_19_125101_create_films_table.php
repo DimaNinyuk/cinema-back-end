@@ -18,7 +18,7 @@ class CreateFilmsTable extends Migration
             $table->timestamps();
             $table->string('name', 255);
             $table->text('description');
-            $table->date('release-date');
+            $table->date('release_date');
         });
     }
 
