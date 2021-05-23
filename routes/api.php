@@ -27,4 +27,4 @@ Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
 Route::get('/films','FilmsController@today');
-Route::get('/filmsbygenre','FilmsController@bygenre');
+Route::get('/filmsbygenre/{date}','FilmsController@bygenre');

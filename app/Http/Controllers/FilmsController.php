@@ -16,10 +16,12 @@ class FilmsController extends Controller
             //
     }
 
-    public function bygenre()
+    public function bygenre($date)
     {
-        return
-            Genre::with('genrefilms', 'genrefilms.film')->get();
+        $g = Genre::whereHas('genrefilms.film', function($q) use($date){
+            $q->where('release_date',$date);
+        })->with('genrefilms','genrefilms.film')->get();
+        return $g;
 
     }
 
