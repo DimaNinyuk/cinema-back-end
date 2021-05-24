@@ -28,3 +28,14 @@ Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
 Route::get('/films','FilmsController@today');
 Route::get('/filmsbygenre/{date}','FilmsController@bygenre');
+//admin
+//film
+Route::get('/admin-films', 'AdminFilmController@index');
+Route::get('/admin-films/{film}', 'AdminFilmController@show');
+Route::post('/admin-films','AdminFilmController@store');
+Route::put('/admin-films/{film}','AdminFilmController@update');
+Route::delete('/admin-films/{film}', 'AdminFilmController@delete');
+//genre
+Route::get('/admin-genres', 'AdminGenreController@index');
+Route::post('/admin-genres','AdminGenreController@insert');
+Route::delete('/admin-genres/{film}', 'AdminGenreController@delete');
