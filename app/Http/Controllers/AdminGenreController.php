@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Genre;
+use App\GenreFilm;
 use Illuminate\Http\Request;
 use App\Film;
 
@@ -18,10 +19,13 @@ class AdminGenreController extends Controller
  
         return response()->json($genre, 201);
     }
-    public function delete(Film $genre)
+    public function delete(Genre $genre)
     {
         $genre->delete();
         return response()->json(null, 204);
     }
-    
+    public function show(Film $film)
+    {
+        return GenreFilm::where('film_id',$film->id)->get();
+    }
 }

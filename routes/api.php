@@ -37,5 +37,6 @@ Route::put('/admin-films/{film}','AdminFilmController@update');
 Route::delete('/admin-films/{film}', 'AdminFilmController@delete');
 //genre
 Route::get('/admin-genres', 'AdminGenreController@index');
+Route::get('/admin-genres/{film}', 'AdminGenreController@show');
 Route::post('/admin-genres','AdminGenreController@insert');
 Route::delete('/admin-genres/{film}', 'AdminGenreController@delete');
