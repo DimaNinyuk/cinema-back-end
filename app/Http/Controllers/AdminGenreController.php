@@ -28,4 +28,6 @@ class AdminGenreController extends Controller
     {
         return GenreFilm::where('film_id',$film->id)->get();
     }
+
+    
 }

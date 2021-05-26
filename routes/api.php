@@ -40,3 +40,5 @@ Route::get('/admin-genres', 'AdminGenreController@index');
 Route::get('/admin-genres/{film}', 'AdminGenreController@show');
 Route::post('/admin-genres','AdminGenreController@insert');
 Route::delete('/admin-genres/{film}', 'AdminGenreController@delete');
+//genresfilm
+Route::post('/admin-genrefilm','AdminGenreFilmController@insert');

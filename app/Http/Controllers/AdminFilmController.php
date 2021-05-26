@@ -19,7 +19,7 @@ class AdminFilmController extends Controller
  
     public function show(Film $film)
     {
-        return $film;
+        return Film::where('id',$film->id)->with('genrefilms','actorfilms','actorfilms.actor')->first();
     }
  
     public function store(Request $request)
@@ -32,7 +32,7 @@ class AdminFilmController extends Controller
     public function update(Request $request, Film $film)
     {
         $film->update($request->all());
- 
+        GenreFilm::where('film_id',$film->id)->delete();
         return response()->json($film, 200);
     }
  
