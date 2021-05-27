@@ -35,10 +35,17 @@ Route::get('/admin-films/{film}', 'AdminFilmController@show');
 Route::post('/admin-films','AdminFilmController@store');
 Route::put('/admin-films/{film}','AdminFilmController@update');
 Route::delete('/admin-films/{film}', 'AdminFilmController@delete');
-//genre
+//genres
 Route::get('/admin-genres', 'AdminGenreController@index');
-Route::get('/admin-genres/{film}', 'AdminGenreController@show');
-Route::post('/admin-genres','AdminGenreController@insert');
-Route::delete('/admin-genres/{film}', 'AdminGenreController@delete');
 //genresfilm
 Route::post('/admin-genrefilm','AdminGenreFilmController@insert');
+//acotrs
+Route::get('/admin-actors', 'AdminActorController@index');
+//actorfilms
+Route::post('/admin-actorfilm','AdminActorFilmController@insert');
+//producer
+Route::get('/admin-producers', 'AdminProducerController@index');
+//producerfilms
+Route::post('/admin-producerfilm','AdminProducerFilmController@insert');
+//companies
+Route::get('/admin-companies', 'AdminCompanyController@index');

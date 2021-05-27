@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Genre;
-use App\GenreFilm;
+use App\Company;
 use Illuminate\Http\Request;
 use App\Film;
 
-class AdminGenreController extends Controller
+class AdminCompanyController extends Controller
 {
     public function index()
     {
-        return Genre::all();
+        return Company::all();
     }
 }
