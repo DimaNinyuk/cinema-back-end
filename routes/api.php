@@ -26,7 +26,7 @@ Route::get('auth/google/callback', 'Api\Auth\GoogleController@Callback');
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
-Route::get('/films','FilmsController@today');
+Route::get('/recommends','FilmsController@recommends');
 Route::get('/filmsbygenre/{date}','FilmsController@bygenre');
 //admin
 //film
@@ -49,3 +49,5 @@ Route::get('/admin-producers', 'AdminProducerController@index');
 Route::post('/admin-producerfilm','AdminProducerFilmController@insert');
 //companies
 Route::get('/admin-companies', 'AdminCompanyController@index');
+//customer's film information
+Route::get('/film-detail/{film}', 'FilmsController@details');

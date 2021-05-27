@@ -8,12 +8,10 @@ use App\Film;
 
 class FilmsController extends Controller
 {
-    public function today()
+    public function recommends()
     {
         return
             Film::with('genrefilms')->get();
-
-            //
     }
 
     public function bygenre($date)
@@ -23,6 +21,14 @@ class FilmsController extends Controller
         })->with('genrefilms','genrefilms.film')->get();
         return $g;
 
+    }
+
+    public function details(Film $film)
+    {
+        return
+            Film::where('id', $film->id)->with('genrefilms','genrefilms.genre',
+            'actorfilms','actorfilms.actor', 'producerfilms', 'producerfilms.producer',
+            'company','image')->first();
     }
 
 
