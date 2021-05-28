@@ -53,3 +53,7 @@ Route::get('/admin-companies', 'AdminCompanyController@index');
 Route::get('/film-detail/{film}', 'FilmsController@details');
 //film upload images
 Route::post('/admin-upload-image-film','AdminImageController@upload');
+// film sessions
+Route::get('/film-sessions/{film}', 'SessionController@details');
+// film dates
+Route::get('/film-dates/{film}', 'SessionController@filmDates');
