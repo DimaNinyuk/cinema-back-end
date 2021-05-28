@@ -51,3 +51,5 @@ Route::post('/admin-producerfilm','AdminProducerFilmController@insert');
 Route::get('/admin-companies', 'AdminCompanyController@index');
 //customer's film information
 Route::get('/film-detail/{film}', 'FilmsController@details');
+//film upload images
+Route::post('/admin-upload-image-film','AdminImageController@upload');
