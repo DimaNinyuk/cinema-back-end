@@ -65,3 +65,10 @@ Route::get('/admin-sessions/{session}', 'AdminSessionController@show');
 Route::post('/admin-sessions','AdminSessionController@store');
 Route::put('/admin-sessions/{session}','AdminSessionController@update');
 Route::delete('/admin-sessions/{session}', 'AdminSessionController@delete');
+//admin halls
+Route::get('/admin-halls', 'AdminHallController@index');
+Route::get('/admin-halls/{hall}', 'AdminHallController@show');
+Route::post('/admin-halls','AdminHallController@store');
+Route::put('/admin-halls/{hall}','AdminHallController@update');
+Route::delete('/admin-halls/{hall}', 'AdminHallController@delete');
+
