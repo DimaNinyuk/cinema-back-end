@@ -71,4 +71,6 @@ Route::get('/admin-halls/{hall}', 'AdminHallController@show');
 Route::post('/admin-halls','AdminHallController@store');
 Route::put('/admin-halls/{hall}','AdminHallController@update');
 Route::delete('/admin-halls/{hall}', 'AdminHallController@delete');
+// adding film reviews
+Route::post('/film-reviews', 'ReviewController@store');
 

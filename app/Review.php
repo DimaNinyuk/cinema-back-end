@@ -12,6 +12,8 @@ class Review extends Model
         'comment',
         'user_id',
         'film_id',
+        'name',
+        'email'
     ];
     public function user(){
         return $this->belongsTo(User::class);
