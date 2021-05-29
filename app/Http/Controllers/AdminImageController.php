@@ -12,6 +12,7 @@ class AdminImageController extends Controller
 {
     public function upload(Request $request)
     {
+        $namefile = time().rand(0,1000000).'_'.basename($_FILES['file']['name']);
         $uploaddir =public_path() .'/img/film';
         $namefile = time().rand(0,1000000).'_'.basename($_FILES['file']['name']);
         $uploadfile = $uploaddir .'/'. $namefile;
@@ -19,6 +20,6 @@ class AdminImageController extends Controller
         $image=Image::create([
             'img' => $namefile,
         ]);
-        return response()->json($image, 201);
+        return response()->json($image->id, 201);
     }
 }
