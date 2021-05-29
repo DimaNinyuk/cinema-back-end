@@ -57,3 +57,5 @@ Route::post('/admin-upload-image-film','AdminImageController@upload');
 Route::get('/film-sessions/{film}', 'SessionController@details');
 // film dates
 Route::get('/film-dates/{film}', 'SessionController@filmDates');
+// film reviews
+Route::get('/film-reviews/{film}', 'ReviewController@filmReviews');
