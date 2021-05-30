@@ -51,13 +51,13 @@ Route::post('/admin-producerfilm','AdminProducerFilmController@insert');
 Route::get('/admin-companies', 'AdminCompanyController@index');
 //customer's film information
 Route::get('/film-detail/{film}', 'FilmsController@details');
-//film upload images
+//customer's film upload images
 Route::post('/admin-upload-image-film','AdminImageController@upload');
 // film sessions
 Route::get('/film-sessions/{film}', 'SessionController@details');
-// film dates
+// customer's film dates
 Route::get('/film-dates/{film}', 'SessionController@filmDates');
-// film reviews
+//customer's film reviews
 Route::get('/film-reviews/{film}', 'ReviewController@filmReviews');
 //admin sessions
 Route::get('/admin-sessions', 'AdminSessionController@index');
@@ -71,7 +71,7 @@ Route::get('/admin-halls/{hall}', 'AdminHallController@show');
 Route::post('/admin-halls','AdminHallController@store');
 Route::put('/admin-halls/{hall}','AdminHallController@update');
 Route::delete('/admin-halls/{hall}', 'AdminHallController@delete');
-// adding film reviews
+// customer's adding film reviews
 Route::post('/film-reviews', 'ReviewController@store');
 //admin buyings
 Route::get('/admin-buyings', 'AdminBuyingController@index');
@@ -85,3 +85,5 @@ Route::get('/admin-reviews/{review}', 'AdminReviewController@show');
 Route::post('/admin-reviews','AdminReviewController@store');
 Route::put('/admin-reviews/{review}','AdminReviewController@update');
 Route::delete('/admin-reviews/{review}', 'AdminReviewController@delete');
+//customer's film search
+Route::get('/film-search', 'FilmsController@search');

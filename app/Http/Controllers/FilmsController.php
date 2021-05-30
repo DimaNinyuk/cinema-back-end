@@ -31,5 +31,26 @@ class FilmsController extends Controller
             'company','image')->first();
     }
 
+    public function search()
+    {
+        return Film::with('genrefilms','genrefilms.genre',
+        'actorfilms','actorfilms.actor', 'producerfilms', 'producerfilms.producer',
+        'company')->where('name', 'LIKE', '%'.$_GET['key'].'%')
+        ->orWhere('description', 'LIKE', '%'.$_GET['key'].'%')
+        ->orWhere('release_date', 'LIKE', '%'.$_GET['key'].'%')
+        ->orWhereHas('genrefilms.genre', function($q) {
+            $q->where('name', 'LIKE', '%'.$_GET['key'].'%');
+        })
+            ->orWhereHas('actorfilms.actor', function($q) {
+                $q->where('name', 'LIKE', '%'.$_GET['key'].'%');
+        })
+         ->orWhereHas('producerfilms.producer', function($q) {
+                $q->where('name', 'LIKE', '%'.$_GET['key'].'%');
+        })
+        ->orWhereHas('company', function($q) {
+            $q->where('name', 'LIKE', '%'.$_GET['key'].'%');
+    })
+        ->get();
+    }
 
 }
