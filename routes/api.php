@@ -79,4 +79,9 @@ Route::get('/admin-buyings/{buying}', 'AdminBuyingController@show');
 Route::post('/admin-buyings','AdminBuyingController@store');
 Route::put('/admin-buyings/{buying}','AdminBuyingController@update');
 Route::delete('/admin-buyings/{buying}', 'AdminBuyingController@delete');
-
+//admin reviews
+Route::get('/admin-reviews', 'AdminReviewController@index');
+Route::get('/admin-reviews/{review}', 'AdminReviewController@show');
+Route::post('/admin-reviews','AdminReviewController@store');
+Route::put('/admin-reviews/{review}','AdminReviewController@update');
+Route::delete('/admin-reviews/{review}', 'AdminReviewController@delete');
