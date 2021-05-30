@@ -73,4 +73,10 @@ Route::put('/admin-halls/{hall}','AdminHallController@update');
 Route::delete('/admin-halls/{hall}', 'AdminHallController@delete');
 // adding film reviews
 Route::post('/film-reviews', 'ReviewController@store');
+//admin buyings
+Route::get('/admin-buyings', 'AdminBuyingController@index');
+Route::get('/admin-buyings/{buying}', 'AdminBuyingController@show');
+Route::post('/admin-buyings','AdminBuyingController@store');
+Route::put('/admin-buyings/{buying}','AdminBuyingController@update');
+Route::delete('/admin-buyings/{buying}', 'AdminBuyingController@delete');
 

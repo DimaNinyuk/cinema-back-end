@@ -16,8 +16,8 @@ class Buying extends Model
     public function session(){
         return $this->belongsTo(Session::class);
     }
-    public function seat()
+    public function buyingseats()
     {
-        return $this->hasMany(Seat::class);
+        return $this->hasMany(BuyingSeat::class);
     }
 }

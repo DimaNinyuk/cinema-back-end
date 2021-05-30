@@ -14,8 +14,8 @@ class Seat extends Model
     public function row(){
         return $this->belongsTo(Row::class);
     }
-    public function buyings()
+    public function buyingseats()
     {
-        return $this->hasMany(Buying::class);
+        return $this->hasMany(BuyingSeat::class);
     }
 }
