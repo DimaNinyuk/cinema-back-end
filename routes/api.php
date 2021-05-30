@@ -87,3 +87,5 @@ Route::put('/admin-reviews/{review}','AdminReviewController@update');
 Route::delete('/admin-reviews/{review}', 'AdminReviewController@delete');
 //customer's film search
 Route::get('/film-search', 'FilmsController@search');
+//test
+Route::get('/get-payment-string/{info}','PaymentController@format');
