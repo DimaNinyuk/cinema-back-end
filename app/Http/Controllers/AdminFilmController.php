@@ -25,12 +25,12 @@ class AdminFilmController extends Controller
     public function index()
     {
 
-        return Film::with('genrefilms','actorfilms','producerfilms','image')->get();
+        return Film::with('genrefilms','actorfilms','producerfilms','image','reviews')->get();
     }
  
     public function show(Film $film)
     {
-        return Film::where('id',$film->id)->with('genrefilms','actorfilms','producerfilms','image')->first();
+        return Film::where('id',$film->id)->with('genrefilms','actorfilms','producerfilms','image','reviews')->first();
     }
  
     public function store(Request $request)
