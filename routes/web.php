@@ -1,5 +1,6 @@
 <?php
 
+use App\Buying;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/downloadPDF/{id}','BuyingPDFController@downloadPDF');
+Route::get('/pdf/{id}', function ($id) {
+    $buying = Buying::find($id);
+    return view('pdf',compact('buying'));
+});
