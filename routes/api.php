@@ -89,3 +89,5 @@ Route::delete('/admin-reviews/{review}', 'AdminReviewController@delete');
 Route::get('/film-search', 'FilmsController@search');
 //test
 Route::get('/get-payment-string/{info}','PaymentController@format');
+//download ticket
+Route::get('/downloadPDF/{id}','BuyingPDFController@downloadPDF');
