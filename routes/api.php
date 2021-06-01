@@ -89,3 +89,12 @@ Route::delete('/admin-reviews/{review}', 'AdminReviewController@delete');
 Route::get('/film-search', 'FilmsController@search');
 //test
 Route::get('/get-payment-string/{info}','PaymentController@format');
+//download ticket
+Route::get('/downloadPDF/{id}','BuyingPDFController@downloadPDF');
+//user buyings
+Route::get('/user-buyings', 'UserBuyingController@index');
+Route::get('/user-buyings/{user}', 'UserBuyingController@show');
+Route::get('/user-newbuyings/{user}', 'UserBuyingController@newshow');
+Route::post('/user-buyings','UserBuyingController@store');
+Route::put('/user-buyings/{buying}','UserBuyingController@update');
+Route::delete('/user-buyings/{buying}', 'UserBuyingController@delete');
