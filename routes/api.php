@@ -98,3 +98,5 @@ Route::get('/user-newbuyings/{user}', 'UserBuyingController@newshow');
 Route::post('/user-buyings','UserBuyingController@store');
 Route::put('/user-buyings/{buying}','UserBuyingController@update');
 Route::delete('/user-buyings/{buying}', 'UserBuyingController@delete');
+// Send to Email
+Route::post('/user-send-email','SendEmailController@send');
