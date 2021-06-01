@@ -19,14 +19,15 @@ use App\Http\Controllers\LoginController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Auth
 Route::get('auth/google/url', 'Api\Auth\GoogleController@loginUrl');
 Route::get('auth/google/callback', 'Api\Auth\GoogleController@Callback');
-
+//Customer's homepage
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::get('/logout', 'UserController@logout');
 Route::get('/recommends','FilmsController@recommends');
+Route::get('/newfilms','FilmsController@newfilms');
 Route::get('/filmsbygenre/{date}','FilmsController@bygenre');
 //admin
 //film
