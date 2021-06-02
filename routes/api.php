@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,7 +53,7 @@ Route::post('/admin-producerfilm','AdminProducerFilmController@insert');
 Route::get('/admin-companies', 'AdminCompanyController@index');
 //customer's film information
 Route::get('/film-detail/{film}', 'FilmsController@details');
-//customer's film upload images
+//film upload images
 Route::post('/admin-upload-image-film','AdminImageController@upload');
 // film sessions
 Route::get('/film-sessions/{film}', 'SessionController@details');

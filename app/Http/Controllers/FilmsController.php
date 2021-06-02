@@ -6,6 +6,8 @@ use App\Genre;
 use Illuminate\Http\Request;
 use App\Film;
 use DateTime;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class FilmsController extends Controller
 {
@@ -28,10 +30,27 @@ class FilmsController extends Controller
     }
     public function bygenre($date)
     {
-        $fg= Genre::with(array('genrefilms' =>  function($q) use($date){
-            $q->has('film.sessions')->with(array('film.sessions'=> function($s) use($date){
-                $s->where('date','>=',$date);}));
-        }))->get();
+        $genres=Genre::with('genrefilms.film.sessions')->get()->toArray();
+        $newgenres=collect();
+        foreach($genres as $genre){
+            $newgenre=  $genre;
+            
+            $newgenre['genrefilms']=collect();
+            foreach($genre['genrefilms'] as $genrefilm)
+            {
+                $newgenrefilm= $genrefilm;
+                $newgenrefilm['film']['sessions']=collect();
+               foreach($genrefilm['film']['sessions'] as $session){
+                  if($session['date']==$date){
+                    $newgenrefilm['film']['sessions']->add($session);}
+               }
+                if($newgenrefilm['film']['sessions']->count()>0 
+                && !$newgenre['genrefilms']->contains('film_id', $newgenrefilm['film_id']))
+                $newgenre['genrefilms']->add($newgenrefilm);
+            }
+                if($newgenre['genrefilms']  ->count()>0)
+            $newgenres->add($newgenre);
+        }
        
         /*join('genre_films', 'genres.id', '=', 'genre_id')->
         join('films','genre_films.film_id', '=', 'films.id')->
@@ -42,7 +61,7 @@ class FilmsController extends Controller
         }
             ))->has('genrefilms.film.sessions')->get();
             */
-        return $fg;
+        return $newgenres;
 
     }
 
