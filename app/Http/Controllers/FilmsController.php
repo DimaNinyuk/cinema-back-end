@@ -14,23 +14,35 @@ class FilmsController extends Controller
         $dt = new DateTime();
         return
             Film::whereHas('sessions', function($s) use($dt){
-                $s->where('date','=',$dt->format('Y-m-d'));
-            })->orderBy('name', 'ASC')->with('genrefilms','image','genrefilms.genre')->get();
+                $s->where('date','>=',$dt->format('Y-m-d'));
+            })->where('release_date',"<=",$dt)->orderBy('name', 'ASC')->with('genrefilms','image','genrefilms.genre')->get();
     }
 
     public function newfilms()
     {
         $dt = new DateTime();
-        return
-            Film::where('release_date','>=',$dt->format('Y-m-d'))
+        
+         $rows = Film::where('release_date','>=',$dt->format('Y-m-d'))
             ->orderBy('release_date', 'ASC')->with('genrefilms','image')->get();
+            return  $rows->count()>10?$rows->random(10):$rows;
     }
     public function bygenre($date)
     {
-        $g = Genre::whereHas('genrefilms.film', function($q) use($date){
-            $q->where('release_date',$date);
-        })->with('genrefilms','genrefilms.film.genrefilms.genre',)->get();
-        return $g;
+        $fg= Genre::with(array('genrefilms' =>  function($q) use($date){
+            $q->has('film.sessions')->with(array('film.sessions'=> function($s) use($date){
+                $s->where('date','>=',$date);}));
+        }))->get();
+       
+        /*join('genre_films', 'genres.id', '=', 'genre_id')->
+        join('films','genre_films.film_id', '=', 'films.id')->
+        join('sessions','films.id', '=', 'sessions.film_id')->get();
+        */
+        /*with(array('genrefilms.film.sessions' =>  function($q) use($date){
+            $q->where('date',$date);
+        }
+            ))->has('genrefilms.film.sessions')->get();
+            */
+        return $fg;
 
     }
 
