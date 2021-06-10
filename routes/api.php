@@ -4,8 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,7 +14,6 @@ use App\Http\Controllers\LoginController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -90,7 +87,7 @@ Route::delete('/admin-reviews/{review}', 'AdminReviewController@delete');
 //customer's film search
 Route::get('/film-search', 'FilmsController@search');
 //test
-Route::get('/get-payment-string/{info}','PaymentController@format');
+Route::post('/get-payment-string','PaymentController@format');
 //download ticket
 Route::get('/downloadPDF/{id}','BuyingPDFController@downloadPDF');
 //user buyings
@@ -102,3 +99,9 @@ Route::put('/user-buyings/{buying}','UserBuyingController@update');
 Route::delete('/user-buyings/{buying}', 'UserBuyingController@delete');
 // Send to Email
 Route::post('/user-send-email','SendEmailController@send');
+// Callback LiqPay
+Route::post('/callback-payment','PaymentController@callback');
+//session's places
+Route::get('/places-sessions/{id}', 'BuyingSeatController@show');
+//session's places
+Route::get('/buying-detail/{id}', 'BuyingController@show');

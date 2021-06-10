@@ -17,7 +17,8 @@ class FilmsController extends Controller
         return
             Film::whereHas('sessions', function($s) use($dt){
                 $s->where('date','>=',$dt->format('Y-m-d'));
-            })->where('release_date',"<=",$dt)->orderBy('name', 'ASC')->with('genrefilms','image','genrefilms.genre')->get();
+            })->where('release_date',"<=",$dt)->orderBy('name', 'ASC')
+            ->with('genrefilms','image','genrefilms.genre')->get();
     }
 
     public function newfilms()
@@ -30,7 +31,7 @@ class FilmsController extends Controller
     }
     public function bygenre($date)
     {
-        $genres=Genre::with('genrefilms.film.sessions')->get()->toArray();
+        $genres=Genre::with('genrefilms.film.sessions','genrefilms.film.image','genrefilms.genre')->get()->toArray();
         $newgenres=collect();
         foreach($genres as $genre){
             $newgenre=  $genre;

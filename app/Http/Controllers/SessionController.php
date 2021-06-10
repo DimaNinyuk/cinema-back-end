@@ -18,6 +18,6 @@ class SessionController extends Controller
     function filmDates (Film $film){
         $dt = new DateTime();
         return Session::where('film_id',$film->id)->where(
-            'date','>=',$dt->format('Y-m-d'))->select('date')->distinct()->get();;
+            'date','>=',$dt->format('Y-m-d'))->select('date')->distinct()->get();
     }
 }

@@ -8,7 +8,7 @@ use App\Film;
 
 class AdminActorFilmController extends Controller
 {
-    public function insert(Request $request)
+  public function insert(Request $request)
     {
       $data=count($request->all());
       for($i=0;$i<(int)$data;$i++)
