@@ -10,10 +10,20 @@ class PaymentController extends Controller
 {
     public function format(Request $request)
     {
+      $id=(int)($request['user_id']);
+      if(count($request['seats'])>0){
+     if($id!==0){
       $b=Buying::create([
             'session_id'=>(int)($request['session_id']),
             'sum'=>$request['sum'],
+            'user_id'=>$id,
         ]);
+      }
+      else 
+      $b=Buying::create([
+        'session_id'=>(int)($request['session_id']),
+        'sum'=>$request['sum'],
+    ]);
           for($i=0;$i<(int)count($request['seats']);$i++)
       {
         BuyingSeat::create([
@@ -26,7 +36,7 @@ class PaymentController extends Controller
         $liqpay = new LiqPay($public_key, $private_key);
         $html = $liqpay->cnb_form(array(
             'action'         => 'pay',
-            'amount'         => '1',
+            'amount'         => $request['sum'],
             'currency'       => 'UAH',
             'description'    => 'description text',
             'order_id'       => $b->id,
@@ -35,7 +45,8 @@ class PaymentController extends Controller
             'result_url'     =>'http://localhost:3000/order-detail/'.$b->id,
             ));
       return $html;
-     
+          }
+          return "";
 
     }
     

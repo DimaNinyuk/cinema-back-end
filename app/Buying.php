@@ -11,6 +11,7 @@ class Buying extends Model
         'date',
         'sum',
         'session_id',
+        'user_id'
     ];
     public function session(){
         return $this->belongsTo(Session::class);
