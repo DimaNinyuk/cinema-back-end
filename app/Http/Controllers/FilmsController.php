@@ -78,7 +78,7 @@ class FilmsController extends Controller
     {
         return Film::with('genrefilms','genrefilms.genre',
         'actorfilms','actorfilms.actor', 'producerfilms', 'producerfilms.producer',
-        'company', 'imege')->where('name', 'LIKE', '%'.$_GET['key'].'%')
+        'company', 'image')->where('name', 'LIKE', '%'.$_GET['key'].'%')
         ->orWhere('description', 'LIKE', '%'.$_GET['key'].'%')
         ->orWhere('release_date', 'LIKE', '%'.$_GET['key'].'%')
         ->orWhereHas('genrefilms.genre', function($q) {
